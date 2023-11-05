@@ -57,19 +57,19 @@ router.route("/get-user-info-by-account") // taiKhoan
 // Các route POST cho thêm mới dữ liệu
 router.route("/add-reader") // taiKhoan, matKhau, hoTen, diaChi, soDienThoai, email
   .post(LMS_POST.themDocGia)
-router.route("/add-librarian")
-  .post(LMS_POST.themThuThu)
-router.route("/add-fine")
+router.route("/add-librarian") // taiKhoan, matKhau, hoTen, diaChi, soDienThoai, email
+  .post(LMS_POST.themThuThu) 
+router.route("/add-fine") // idMuonSach, NgayGhiNhan, SoTienPhat
   .post(LMS_POST.themKhoanPhat)
-router.route("/add-ticket")
+router.route("/add-ticket") // idNguoiDung, idSach, ngayMuon, ngayHenTra, idThuThu
   .post(LMS_POST.themMuonSach)
-router.route("/add-publisher")
-  .post(LMS_POST.themNhaXuatBan)
-router.route("/add-book")
-  .post(LMS_POST.themSach)
-router.route("/add-author")
-  .post(LMS_POST.themTacGia)
-router.route("/add-genre")
+router.route("/add-publisher")// tenNXB, namThanhLap
+  .post(LMS_POST.themNhaXuatBan) 
+router.route("/add-book") // tenSach, moTa, idNhaXuatBan, idTacGia, idTheLoaiSach
+  .post(LMS_POST.themSach) 
+router.route("/add-author") // tenTacGia, butDanh
+  .post(LMS_POST.themTacGia) 
+router.route("/add-genre") // tenTheLoai, moTa
   .post(LMS_POST.themTheLoaiSach)
 
 
