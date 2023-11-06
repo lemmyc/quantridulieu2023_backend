@@ -211,5 +211,46 @@ const lmsPostController = {
       console.error(err);
     }
   },
+  traMuonSach: async (req, res) => {
+    try {
+      const idMuonSach = parseInt(req.body?.idMuonSach, 10);
+      const ngayTraThucTe = req.body?.ngayTraThucTe;
+      const trangThaiMuon = req.body?.trangThaiMuon;
+      let errors = checkValid({ idMuonSach, ngayTraThucTe, trangThaiMuon });
+
+      if (errors.length > 0) {
+        res.status(400).json({ messages: errors });
+      } else {
+        const [result] = await pool.query(
+          "call Tra_MuonSach(?, ?, ?)",
+          [idMuonSach, ngayTraThucTe, trangThaiMuon]
+        );
+        res.status(200).json({ success: true, message: 'Thêm trả sách thành công', result });
+      }
+    } catch (err) {
+      res.status(500).json({ error: "Internal Server Error", code: err?.code });
+      console.error(err);
+    }
+  },
+  xacThucDangNhap: async (req, res) => {
+    try {
+      const taiKhoan = req.body?.taiKhoan;
+      const matKhau = req.body?.matKhau;
+      let errors = checkValid({ taiKhoan, matKhau });
+
+      if (errors.length > 0) {
+        res.status(400).json({ messages: errors });
+      } else {
+        const [result] = await pool.query(
+          "select XacThuc_DangNhap(?, ?) result",
+          [taiKhoan, matKhau]
+        );
+        res.status(200).json({ success: true, message: parseInt(result[0].result, 10) === 1});
+      }
+    } catch (err) {
+      res.status(500).json({ error: "Internal Server Error", code: err?.code });
+      console.error(err);
+    }
+  },
 };
 module.exports = lmsPostController;

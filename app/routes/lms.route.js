@@ -1,6 +1,8 @@
 const express = require("express");
 const LMS_GET = require("../controller/lms.get.controller");
 const LMS_POST = require("../controller/lms.post.controller");
+const LMS_PUT = require("../controller/lms.put.controller");
+const LMS_DELETE = require("../controller/lms.delete.controller");
 
 const router = express.Router();
 
@@ -71,7 +73,40 @@ router.route("/add-author") // tenTacGia, butDanh
   .post(LMS_POST.themTacGia) 
 router.route("/add-genre") // tenTheLoai, moTa
   .post(LMS_POST.themTheLoaiSach)
+router.route("/add-book-return") // idMuonSach, ngayTraThucTe, trangThaiMuon
+  .post(LMS_POST.traMuonSach)
+router.route("/authenticate") // taiKhoan, matKhau
+  .post(LMS_POST.xacThucDangNhap)
 
+// Các route PUT cho việc chỉnh sửa dữ liệu
+router.route("/edit-fine") // idKhoanPhat, idMuonSach, ngayGhiNhan, soTienPhat, trangThai
+  .put(LMS_PUT.suaKhoanPhat)
+router.route("/edit-user-password") // idNguoiDung, matKhauMoi
+  .put(LMS_PUT.suaMatKhauNguoiDung)
+router.route("/edit-ticket") // idMuonSach, idNguoiDung, idSach, ngayMuon, ngayHenTra, ngayTraThucTe, TrangThaiMuon, idThuThu
+  .put(LMS_PUT.suaMuonSach)
+router.route("/edit-user") // idNguoiDung, hoTen, soDienThoai, email, diaChi
+  .put(LMS_PUT.suaNguoiDung)
+router.route("/edit-publisher") // idNXB, tenNXB, namThanhLap
+  .put(LMS_PUT.suaNXB)
+router.route("/edit-book") // idSach, idNhaXuatBan, idTacGia, idTheLoaiSach, tenSach, moTa
+  .put(LMS_PUT.suaSach)
+router.route("/edit-author") // idTacGia, butDanh, tenTacGia
+  .put(LMS_PUT.suaTacGia)
+router.route("/edit-genre") // idTheLoaiSach, tenTheLoai, moTa
+  .put(LMS_PUT.suaTheLoaiSach)
+router.route("/edit-book-status") // idSach, trangThaiSach
+  .put(LMS_PUT.suaTrangThaiSach)
+
+// Các route DELETE cho việc xóa dữ liệu
+router.route("/delete-user") // idNguoiDung
+  .delete(LMS_DELETE.xoaNguoiDung)
+router.route("/delete-publisher") // idNXB
+  .delete(LMS_DELETE.xoaNhaXuatBan)
+router.route("/delete-author") // idTacGia
+  .delete(LMS_DELETE.xoaTacGia)
+router.route("/delete-genre") // idTheLoaiSach
+  .delete(LMS_DELETE.xoaTheLoaiSach)
 
 
 module.exports = router;

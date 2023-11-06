@@ -46,3 +46,12 @@ Thêm Tác giả
 }
 
 Thêm Thể loại sách
+
+Sửa khoản phạt
+{
+    "idKhoanPhat":"2",
+    "idMuonSach":"5",
+    "ngayGhiNhan":"2023-11-10",
+    "soTienPhat":"150000",
+    "trangThai": "paid"
+}
