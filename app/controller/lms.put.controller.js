@@ -61,7 +61,7 @@ const lmsPutController = {
       const ngayTraThucTe = req.body?.ngayTraThucTe;
       const trangThaiMuon = req.body?.trangThaiMuon;
       const idThuThu = parseInt(req.body?.idThuThu, 10);
-      let errors = checkValid({ idNguoiDung, idSach, ngayMuon, ngayHenTra, ngayTraThucTe, trangThaiMuon, idThuThu });
+      let errors = checkValid({ idNguoiDung, idSach, ngayMuon, ngayHenTra, trangThaiMuon, idThuThu });
       if (errors.length > 0) {
         res.status(400).json({ messages: errors });
       } else {

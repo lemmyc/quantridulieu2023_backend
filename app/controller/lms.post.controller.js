@@ -123,7 +123,7 @@ const lmsPostController = {
     try {
       const tenNXB = req.body?.tenNXB;
       const namThanhLap = req.body?.namThanhLap;
-
+      console.log(tenNXB, namThanhLap)
       let errors = checkValid({ tenNXB, namThanhLap });
 
       if (errors.length > 0) {
